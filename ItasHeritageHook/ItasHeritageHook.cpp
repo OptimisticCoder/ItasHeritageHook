@@ -1,17 +1,25 @@
-// ItasHeritageHook.cpp : Defines the exported functions for the DLL application.
-//
-
 #include "stdafx.h"
 #include "ItasHeritageHook.h"
 
+HHOOK _hhook = NULL;
 
-// This is an example of an exported variable
-ITASHERITAGEHOOK_API int nItasHeritageHook=0;
-
-// This is an example of an exported function.
-ITASHERITAGEHOOK_API int fnItasHeritageHook(void)
+ITASHERITAGEHOOK_API int StartHooking(void)
 {
-	return 42;
+	_hhook = SetWindowsHookEx(
+		WH_GETMESSAGE,
+		GetMsgProc,
+		(HINSTANCE)NULL, GetCurrentThreadId());
+	return 0;
+}
+
+LRESULT CALLBACK GetMsgProc(int nCode, WPARAM wParam, LPARAM lParam)
+{
+	//switch (nCode)
+	//{
+	//	case 
+	//}
+
+	return CallNextHookEx(_hhook, nCode, wParam, lParam);
 }
 
 // This is the constructor of a class that has been exported.
