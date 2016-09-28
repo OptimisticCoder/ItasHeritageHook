@@ -1,3 +1,11 @@
 *.opensdf
 *.sdf
 ipch/
+ManagedHost/bin/
+*.user
+ManagedHost/obj/
+ItasHeritageHook/Debug/
+Debug/ItasHeritageHook.ilk
+Debug/ItasHeritageHook.lib
+Debug/ItasHeritageHook.pdb
+*.suo
